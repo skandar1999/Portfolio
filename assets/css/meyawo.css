@@ -12235,3 +12235,31 @@ pre .code {
 .section-lg {
   padding: 100px 0 !important;
 }
+
+
+
+
+.cert-carousel-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.cert-carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  transition: transform 0.8s ease-in-out;
+}
+
+.cert-item {
+  flex: 0 0 auto;
+  margin-right: 5px; 
+  width: 430px; 
+}
+
+@media (max-width: 768px) {
+  .cert-item {
+      width: 310px; 
+
+  }
+}
