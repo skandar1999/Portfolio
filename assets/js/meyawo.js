@@ -23,11 +23,10 @@ $('#nav-toggle').click(function(){
     $('ul.nav').toggleClass('show');
 });
 
-
 $(document).ready(function() {
     let certCarousel = document.querySelector('.cert-carousel');
     let certItems = document.querySelectorAll('.cert-item');
-    let scrollDistance = certItems[0].offsetWidth + 5; 
+    let scrollDistance = certItems[0].offsetWidth + 20; // Add margin between items
     let currentCertIndex = 0;
 
     function scrollNext() {
@@ -38,12 +37,26 @@ $(document).ready(function() {
         certCarousel.style.transform = 'translateX(-' + (scrollDistance * currentCertIndex) + 'px)';
     }
 
-    setInterval(scrollNext, 2100); 
+    function scrollPrev() {
+        currentCertIndex--;
+        if (currentCertIndex < 0) {
+            currentCertIndex = certItems.length - 1;
+        }
+        certCarousel.style.transform = 'translateX(-' + (scrollDistance * currentCertIndex) + 'px)';
+    }
 
+    setInterval(scrollNext, 6000); 
     window.addEventListener('resize', function() {
-        scrollDistance = certItems[0].offsetWidth + 5; 
+        scrollDistance = certItems[0].offsetWidth + 20; // Add margin between items
         certCarousel.style.transform = 'translateX(-' + (scrollDistance * currentCertIndex) + 'px)';
     });
+
+    // Button click events
+    $('.btn-prev').click(function() {
+        scrollPrev();
+    });
+
+    $('.btn-next').click(function() {
+        scrollNext();
+    });
 });
-
-
