@@ -26,32 +26,46 @@ $('#nav-toggle').click(function(){
 $(document).ready(function() {
     let certCarousel = document.querySelector('.cert-carousel');
     let certItems = document.querySelectorAll('.cert-item');
-    let scrollDistance = certItems[0].offsetWidth + 20; // Add margin between items
+    let scrollDistance = certItems[0].offsetWidth + 20; 
     let currentCertIndex = 0;
+    let isAnimating = false;
 
     function scrollNext() {
-        currentCertIndex++;
-        if (currentCertIndex >= certItems.length) {
-            currentCertIndex = 0;
+        if (!isAnimating) {
+            isAnimating = true;
+            currentCertIndex++;
+            if (currentCertIndex >= certItems.length) {
+                currentCertIndex = 0;
+            }
+            moveCarousel();
         }
-        certCarousel.style.transform = 'translateX(-' + (scrollDistance * currentCertIndex) + 'px)';
     }
 
     function scrollPrev() {
-        currentCertIndex--;
-        if (currentCertIndex < 0) {
-            currentCertIndex = certItems.length - 1;
+        if (!isAnimating) {
+            isAnimating = true;
+            currentCertIndex--;
+            if (currentCertIndex < 0) {
+                currentCertIndex = certItems.length - 1;
+            }
+            moveCarousel();
         }
-        certCarousel.style.transform = 'translateX(-' + (scrollDistance * currentCertIndex) + 'px)';
     }
 
-    setInterval(scrollNext, 6000); 
+    function moveCarousel() {
+        certCarousel.style.transition = 'transform 0.8s ease-in-out';
+        certCarousel.style.transform = `translateX(-${scrollDistance * currentCertIndex}px)`;
+
+        certCarousel.addEventListener('transitionend', function() {
+            isAnimating = false;
+        }, { once: true });
+    }
+
     window.addEventListener('resize', function() {
-        scrollDistance = certItems[0].offsetWidth + 20; // Add margin between items
-        certCarousel.style.transform = 'translateX(-' + (scrollDistance * currentCertIndex) + 'px)';
+        scrollDistance = certItems[0].offsetWidth + 20;
+        certCarousel.style.transform = `translateX(-${scrollDistance * currentCertIndex}px)`;
     });
 
-    // Button click events
     $('.btn-prev').click(function() {
         scrollPrev();
     });

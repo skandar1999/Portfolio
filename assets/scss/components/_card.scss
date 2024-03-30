@@ -1,48 +1,55 @@
 .service-card {
-	position: relative;
-	min-height: 230px;
-	border: 1px solid $border-color;
-	overflow: hidden;
-	border-radius: 3px;
+    position: relative;
+    min-height: 230px;
+    border: 1px solid $border-color;
+    overflow: hidden;
+    border-radius: 3px;
 
-	.body {
-		padding: 10px;
+    .body {
+        padding: 20px;
+        text-align: center;
 
-		img.icon {
-			margin-top: 40px;
-			width: 55px;
-			margin-bottom: 25px;
-			@include transition(all,.3s);
-		}
+        img.icon {
+            margin-top: 40px;
+            width: 70px;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
 
-		.title {
+        h6.title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
 
-		}
+        .subtitle {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: bottom 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+            font-size: 14px;
+            color: #777;
+        }
+    }
 
-		.subtitle {
-			position: absolute;
-			bottom: -100%;
-			opacity: 0;
-			visibility: hidden;
-			@include transition(all,.3s);
-		}
-	}
+    &:hover {
+        .body {
+            img.icon {
+                transform: translateY(-5px);
+            }
 
-	&:hover {
-		.body {
-			img.icon {
-				margin-top: 5px;
-				width: 45px;
-				margin-bottom: 15px;
-			}
-
-			.subtitle {
-				bottom: 7px;
-				opacity: 1;
-				visibility: visible;
-			}
-		}
-	}
+            .subtitle {
+                bottom: 10px;
+                opacity: 2;
+                visibility: visible;
+            }
+        }
+    }
 }
 
 
@@ -100,7 +107,7 @@
 	}
 
 	.service-card {
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 	}
 }
 
