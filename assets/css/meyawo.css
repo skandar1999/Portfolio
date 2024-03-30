@@ -12330,9 +12330,9 @@ pre .code {
 
 .github-icon {
     font-size: 22px;
-    margin-right: 14px; /* Adjust margin as needed */
+    margin-right: 14px; 
 }
 
 .blog-card-title {
-    margin: 0; /* Remove default margin for the title */
+    margin: 0; 
 }
