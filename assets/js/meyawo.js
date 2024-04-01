@@ -23,6 +23,8 @@ $("#nav-toggle").click(function () {
   $(this).toggleClass("is-active");
   $("ul.nav").toggleClass("show");
 });
+
+
 $(document).ready(function () {
   let certCarousel = document.querySelector(".cert-carousel");
   let certItems = document.querySelectorAll(".cert-item");
@@ -105,5 +107,11 @@ $(document).ready(function () {
       }
     }
   });
+
+  // Initially hide buttons on mobile
+  if (window.innerWidth <= 768) {
+    $(".btn-prev").hide();
+    $(".btn-next").hide();
+  }
 });
 
