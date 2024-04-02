@@ -98,10 +98,6 @@ $(document).ready(function () {
     e.preventDefault(); // Prevent default touchmove behavior
   });
 
-  // Initially hide buttons on mobile
-  if (window.innerWidth <= 768) {
-    $(".btn-prev").hide();
-    $(".btn-next").hide();
-  }
+
 });
 
