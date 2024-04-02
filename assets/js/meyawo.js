@@ -24,15 +24,12 @@ $("#nav-toggle").click(function () {
   $("ul.nav").toggleClass("show");
 });
 
-
 $(document).ready(function () {
   let certCarousel = document.querySelector(".cert-carousel");
   let certItems = document.querySelectorAll(".cert-item");
   let scrollDistance = certItems[0].offsetWidth + 20;
   let currentCertIndex = 0;
   let isAnimating = false;
-  let touchStartX = 0;
-  let touchEndX = 0;
 
   function scrollNext() {
     if (!isAnimating) {
@@ -85,28 +82,4 @@ $(document).ready(function () {
   $(".btn-next").click(function () {
     scrollNext();
   });
-
-  // Swipe Navigation
-  certCarousel.addEventListener("touchstart", function (e) {
-    touchStartX = e.touches[0].clientX;
-  });
-
-  certCarousel.addEventListener("touchmove", function (e) {
-    touchEndX = e.touches[0].clientX;
-  });
-
-  certCarousel.addEventListener("touchend", function (e) {
-    let touchDiff = touchStartX - touchEndX;
-    if (Math.abs(touchDiff) > 50) {
-      if (touchDiff > 0) {
-        // Swiped left
-        scrollNext();
-      } else {
-        // Swiped right
-        scrollPrev();
-      }
-    }
-  });
-
 });
-
