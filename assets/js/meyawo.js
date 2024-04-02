@@ -24,6 +24,7 @@ $("#nav-toggle").click(function () {
   $("ul.nav").toggleClass("show");
 });
 
+
 $(document).ready(function () {
   let certCarousel = document.querySelector(".cert-carousel");
   let certItems = document.querySelectorAll(".cert-item");
@@ -77,6 +78,14 @@ $(document).ready(function () {
     }px)`;
   });
 
+  $(".btn-prev").click(function () {
+    scrollPrev();
+  });
+
+  $(".btn-next").click(function () {
+    scrollNext();
+  });
+
   // Swipe Navigation
   certCarousel.addEventListener("touchstart", function (e) {
     touchStartX = e.touches[0].clientX;
@@ -84,6 +93,9 @@ $(document).ready(function () {
 
   certCarousel.addEventListener("touchmove", function (e) {
     touchEndX = e.touches[0].clientX;
+  });
+
+  certCarousel.addEventListener("touchend", function (e) {
     let touchDiff = touchStartX - touchEndX;
     if (Math.abs(touchDiff) > 50) {
       if (touchDiff > 0) {
@@ -93,11 +105,8 @@ $(document).ready(function () {
         // Swiped right
         scrollPrev();
       }
-      touchStartX = touchEndX;
     }
-    e.preventDefault(); // Prevent default touchmove behavior
   });
-
 
 });
 
